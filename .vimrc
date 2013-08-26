@@ -76,8 +76,6 @@ NeoBundle 'honza/vim-snippets'
 "key binding
 nnoremap <C-e>e :tabf   $MYVIMRC<CR>
 nnoremap <C-e>s :source $MYVIMRC<CR>
-"tab key bind setting
-nnoremap <C-t> :tabn<CR>
 "ctags setting to open file using tab.
 nnoremap <C-]> <C-w><C-]><C-w>T
 
