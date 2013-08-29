@@ -1,5 +1,3 @@
-" Source a global configuration file if available
-" XXX Deprecated, please move your changes here in /etc/vim/vimrc
 if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
@@ -76,8 +74,9 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'honza/vim-snippets'
 
 "key binding
-nnoremap <C-e>e :tabf   $MYVIMRC<CR>
+nnoremap <C-e>e :tabe   $MYVIMRC<CR>
 nnoremap <C-e>s :source $MYVIMRC<CR>
+nnoremap gc :tab sp<CR>
 "ctags setting to open file using tab.
 nnoremap <C-]> <C-w><C-]><C-w>T
 
