@@ -72,6 +72,8 @@ let g:neosnippet#snippets_directory='~/snippets/'
 
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'honza/vim-snippets'
+NeoBundle 'sudo.vim'
+NeoBundle 'thinca/vim-quickrun'
 
 "key binding
 nnoremap <C-e>e :tabe   $MYVIMRC<CR>
@@ -93,4 +95,4 @@ set tags=~/tags
 set backspace=indent,eol,start
 set fileencodings=iso-2022-jp,utf-8,cp932,euc-jp,default,latin
 autocmd FileType php :set dictionary=~/.vim/dict/php.dict
-
+set clipboard=unnamed,autoselect
