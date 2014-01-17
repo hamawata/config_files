@@ -71,9 +71,11 @@ let g:neosnippet#snippets_directory='~/snippets/'
 "~neosnippet
 
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'sudo.vim'
 NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'itchyny/calendar.vim'
 
 "key binding
 nnoremap <C-e>e :tabe   $MYVIMRC<CR>
@@ -81,6 +83,37 @@ nnoremap <C-e>s :source $MYVIMRC<CR>
 nnoremap gc :tab sp<CR>
 "ctags setting to open file using tab.
 nnoremap <C-]> <C-w><C-]><C-w>T
+
+"vimfiler.vim
+let g:vimfiler_as_default_explorer = 1
+"~vimfiler
+
+"unite.vim
+" The prefix key.
+nnoremap    [unite]   <Nop>
+nmap    <Leader>f [unite]
+
+" unite.vim keymap
+nnoremap [unite]u  :<C-u>Unite -no-split<Space>
+nnoremap <silent> [unite]d :<C-u>Unite<Space>file<CR>
+nnoremap <silent> [unite]f :<C-u>Unite<Space>buffer<CR>
+nnoremap <silent> [unite]b :<C-u>Unite<Space>bookmark<CR>
+nnoremap <silent> [unite]m :<C-u>Unite<Space>file_mru<CR>
+nnoremap <silent> [unite]r :<C-u>UniteWithBufferDir file<CR>
+nnoremap <silent> ,vr :UniteResume<CR>
+
+" vinarise
+let g:vinarise_enable_auto_detect = 1
+
+" unite-build map
+nnoremap <silent> ,vb :Unite build<CR>
+nnoremap <silent> ,vcb :Unite build:!<CR>
+nnoremap <silent> ,vch :UniteBuildClearHighlight<CR>
+"~unite.vim
+
+"quick run
+nnoremap <Leader>qa :QuickRun -args
+
 
 syntax on
 
@@ -91,8 +124,8 @@ set tabstop=4
 set encoding=utf-8
 set number
 set smartindent
-set tags=~/tags
+set tags=~/.tags
 set backspace=indent,eol,start
-set fileencodings=iso-2022-jp,utf-8,cp932,euc-jp,default,latin
+set fileencodings=euc-jp,iso-2022-jp,utf-8,cp932,default,latin
 autocmd FileType php :set dictionary=~/.vim/dict/php.dict
 set clipboard=unnamed,autoselect
