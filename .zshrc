@@ -1,3 +1,8 @@
+export HISTFILE=${HOME}/.zsh_history
+export HISTSIZE=1000
+export SAVEHIST=10000
+setopt hist_ignore_dups
+
 autoload -U compinit
 compinit
 setopt auto_cd
@@ -42,3 +47,4 @@ alias ll="ls -la"
 alias la="ls -a"
 alias gitst="git status"
 alias gitdf="git diff"
+alias gitbr="git branch"
