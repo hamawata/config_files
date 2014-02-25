@@ -2,7 +2,9 @@ if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
 
-set nocompatible
+"---------------plugin settings
+if isdirectory(expand("~/.vim/bundle/neobundle.vim/"))
+
 if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
@@ -77,10 +79,6 @@ NeoBundle 'sudo.vim'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'itchyny/calendar.vim'
 
-"key binding
-nnoremap <C-e>e :tabe   $MYVIMRC<CR>
-nnoremap <C-e>s :source $MYVIMRC<CR>
-nnoremap gc :tab sp<CR>
 "ctags setting to open file using tab.
 nnoremap <C-]> <C-w><C-]><C-w>T
 
@@ -114,6 +112,24 @@ nnoremap <silent> ,vch :UniteBuildClearHighlight<CR>
 "quick run
 nnoremap <Leader>qa :QuickRun -args
 
+set tags=~/.tags
+autocmd FileType php :set dictionary=~/.vim/dict/php.dict
+endif
+"----------------~plugin setting
+
+"for tab complement
+set nocompatible
+
+"key binding
+nnoremap <C-e>e :tabe   $MYVIMRC<CR>
+nnoremap <C-e>s :source $MYVIMRC<CR>
+nnoremap gc :tab sp<CR>
+"cmdline-editing
+cnoremap <C-A> <Home>
+cnoremap <C-F> <Right>
+cnoremap <C-B> <Left>
+cnoremap <Esc>b <S-Left>
+cnoremap <Esc>f <S-Right>
 
 syntax on
 
@@ -124,8 +140,6 @@ set tabstop=4
 set encoding=utf-8
 set number
 set smartindent
-set tags=~/.tags
 set backspace=indent,eol,start
 set fileencodings=euc-jp,iso-2022-jp,utf-8,cp932,default,latin
-autocmd FileType php :set dictionary=~/.vim/dict/php.dict
 set clipboard=unnamed,autoselect
