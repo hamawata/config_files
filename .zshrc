@@ -48,3 +48,6 @@ alias la="ls -a"
 alias gitst="git status"
 alias gitdf="git diff"
 alias gitbr="git branch"
+export PATH=/usr/local/bin:$PATH
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
