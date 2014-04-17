@@ -121,8 +121,8 @@ endif
 set nocompatible
 
 "key binding
-nnoremap <C-e>e :tabe   $MYVIMRC<CR>
-nnoremap <C-e>s :source $MYVIMRC<CR>
+nnoremap <Leader>ee :tabe   $MYVIMRC<CR>
+nnoremap <Leader>es :source $MYVIMRC<CR>
 nnoremap gc :tab sp<CR>
 "cmdline-editing
 cnoremap <C-A> <Home>
