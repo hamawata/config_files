@@ -73,7 +73,7 @@ let g:neosnippet#snippets_directory='~/snippets/'
 "~neosnippet
 
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimfiler.vim'
+NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'sudo.vim'
 NeoBundle 'thinca/vim-quickrun'
@@ -83,7 +83,8 @@ NeoBundle 'itchyny/calendar.vim'
 nnoremap <C-]> <C-w><C-]><C-w>T
 
 "vimfiler.vim
-let g:vimfiler_as_default_explorer = 1
+"NeoBundle 'Shougo/vimfiler.vim'
+"let g:vimfiler_as_default_explorer = 1
 "~vimfiler
 
 "unite.vim
@@ -92,6 +93,7 @@ nnoremap    [unite]   <Nop>
 nmap    <Leader>f [unite]
 
 " unite.vim keymap
+let g:unite_enable_start_insert = 0
 nnoremap [unite]u  :<C-u>Unite -no-split<Space>
 nnoremap <silent> [unite]d :<C-u>Unite<Space>file<CR>
 nnoremap <silent> [unite]f :<C-u>Unite<Space>buffer<CR>
