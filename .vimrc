@@ -9,7 +9,7 @@ if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
@@ -80,6 +80,8 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'itchyny/calendar.vim'
 NeoBundle 'git://github.com/kmnk/vim-unite-giti.git'
 NeoBundle 'junegunn/vim-easy-align'
+
+call neobundle#end()
 
 "ctags setting to open file using tab.
 nnoremap <C-]> <C-w><C-]><C-w>T
