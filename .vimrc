@@ -78,6 +78,8 @@ NeoBundle 'honza/vim-snippets'
 NeoBundle 'sudo.vim'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'itchyny/calendar.vim'
+NeoBundle 'git://github.com/kmnk/vim-unite-giti.git'
+NeoBundle 'junegunn/vim-easy-align'
 
 "ctags setting to open file using tab.
 nnoremap <C-]> <C-w><C-]><C-w>T
@@ -99,7 +101,13 @@ nnoremap <silent> [unite]d :<C-u>Unite<Space>file<CR>
 nnoremap <silent> [unite]f :<C-u>Unite<Space>buffer<CR>
 nnoremap <silent> [unite]b :<C-u>Unite<Space>bookmark<CR>
 nnoremap <silent> [unite]m :<C-u>Unite<Space>file_mru<CR>
-nnoremap <silent> [unite]r :<C-u>UniteWithBufferDir file<CR>
+"nnoremap <silent> [unite]r :<C-u>UniteWithBufferDir file<CR>
+nnoremap <silent> [unite]r :<C-u>UniteWithBufferDir file file/new -buffer-name=file<CR>
+nnoremap <silent> <Leader>gt :<C-u>Unite<Space>giti<CR>
+nnoremap <silent> <Leader>gs :<C-u>Unite<Space>giti/status<CR>
+nnoremap <silent> <Leader>gb :<C-u>Unite<Space>giti/branch<CR>
+nnoremap <silent> <Leader>gl :<C-u>Unite<Space>giti/log<CR>
+nnoremap <silent> <Leader>gr :<C-u>Unite<Space>giti/remote<CR>
 nnoremap <silent> ,vr :UniteResume<CR>
 
 " vinarise
@@ -113,6 +121,9 @@ nnoremap <silent> ,vch :UniteBuildClearHighlight<CR>
 
 "quick run
 nnoremap <Leader>qa :QuickRun -args
+
+"easy align
+vmap <Enter> <Plug>(EasyAlign)
 
 set tags=~/.tags
 autocmd FileType php :set dictionary=~/.vim/dict/php.dict
@@ -145,3 +156,4 @@ set smartindent
 set backspace=indent,eol,start
 set fileencodings=euc-jp,iso-2022-jp,utf-8,cp932,default,latin
 set clipboard=unnamed,autoselect
+set noswapfile
