@@ -81,6 +81,15 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'itchyny/calendar.vim'
 NeoBundle 'git://github.com/kmnk/vim-unite-giti.git'
 NeoBundle 'junegunn/vim-easy-align'
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make -f make_mac.mak',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
 
 call neobundle#end()
 
