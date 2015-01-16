@@ -1,3 +1,9 @@
+# system-wide environment settings for zsh(1)
+if [ -x /usr/libexec/path_helper ]; then
+# prevent duplicate setting in tmux
+    PATH=''
+    eval `/usr/libexec/path_helper -s`
+fi
 export HISTFILE=${HOME}/.zsh_history
 export HISTSIZE=1000
 export SAVEHIST=10000
