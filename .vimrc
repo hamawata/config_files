@@ -1,6 +1,10 @@
 if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
+if isdirectory(expand('~/.vim/userautoload'))
+    set runtimepath+=~/.vim/
+    runtime! userautoload/*.vim
+endif
 
 "---------------plugin settings
 if isdirectory(expand("~/.vim/bundle/neobundle.vim/"))
