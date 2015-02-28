@@ -90,6 +90,8 @@ NeoBundle 'Shougo/vimproc.vim', {
 \     'unix' : 'gmake',
 \    },
 \ }
+NeoBundle 'Shougo/neossh.vim'
+NeoBundle 'Shougo/vimfiler'
 
 call neobundle#end()
 
@@ -97,8 +99,7 @@ call neobundle#end()
 nnoremap <C-]> <C-w><C-]><C-w>T
 
 "vimfiler.vim
-"NeoBundle 'Shougo/vimfiler.vim'
-"let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_as_default_explorer = 1
 "~vimfiler
 
 "unite.vim
