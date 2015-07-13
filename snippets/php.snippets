@@ -1,2 +1,14 @@
 snippet     error_log
-    error_log(${1:message}, 3, '${2:file_path}');
+    error_log(${1:message});
+
+snippet     provider
+    /**
+     * @dataProvider provider_$1
+     */
+    public function ${1:testMethod}()
+    {
+    }
+
+    public function provider_$1()
+    {
+    }
