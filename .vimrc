@@ -74,9 +74,12 @@ NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'sudo.vim'
 NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'itchyny/calendar.vim'
+"NeoBundle 'itchyny/calendar.vim'
 NeoBundle 'git://github.com/kmnk/vim-unite-giti.git'
 NeoBundle 'junegunn/vim-easy-align'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'https://github.com/leafgarland/typescript-vim.git'
+NeoBundle 'https://github.com/clausreinke/typescript-tools.git'
 NeoBundle 'Shougo/vimproc.vim', {
 \ 'build' : {
 \     'windows' : 'tools\\update-dll-mingw',
