@@ -75,7 +75,7 @@ NeoBundle 'honza/vim-snippets'
 NeoBundle 'sudo.vim'
 NeoBundle 'thinca/vim-quickrun'
 "NeoBundle 'itchyny/calendar.vim'
-NeoBundle 'git://github.com/kmnk/vim-unite-giti.git'
+NeoBundle 'https://github.com/kmnk/vim-unite-giti.git'
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'https://github.com/leafgarland/typescript-vim.git'
@@ -91,6 +91,8 @@ NeoBundle 'Shougo/vimproc.vim', {
 \ }
 NeoBundle 'Shougo/neossh.vim'
 NeoBundle 'Shougo/vimfiler'
+NeoBundle 'kana/vim-filetype-haskell'
+NeoBundle 'eagletmt/ghcmod-vim'
 
 call neobundle#end()
 
@@ -162,10 +164,11 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-set encoding=utf-8
+"set encoding=utf-8
 set number
 set smartindent
 set backspace=indent,eol,start
 set fileencodings=euc-jp,iso-2022-jp,utf-8,cp932,default,latin
-set clipboard=unnamed,autoselect
+"set clipboard=unnamed,autoselect
 set noswapfile
+filetype plugin indent on
