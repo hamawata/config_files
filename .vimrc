@@ -93,6 +93,8 @@ NeoBundle 'Shougo/neossh.vim'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'kana/vim-filetype-haskell'
 NeoBundle 'eagletmt/ghcmod-vim'
+"NeoBundle 'alvan/vim-php-manual'
+NeoBundle 'thinca/vim-ref'
 
 call neobundle#end()
 
@@ -139,6 +141,9 @@ nnoremap <Leader>qa :QuickRun -args
 "easy align
 vmap <Enter> <Plug>(EasyAlign)
 
+"vim-ref
+let g:ref_phpmanual_path = $HOME . '/.vim/ref/php-chunked-xhtml'
+
 set tags=~/.tags
 autocmd FileType php :set dictionary=~/.vim/dict/php.dict
 endif
@@ -164,7 +169,7 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-"set encoding=utf-8
+set encoding=utf-8
 set number
 set smartindent
 set backspace=indent,eol,start
@@ -172,3 +177,6 @@ set fileencodings=euc-jp,iso-2022-jp,utf-8,cp932,default,latin
 "set clipboard=unnamed,autoselect
 set noswapfile
 filetype plugin indent on
+"set formatoptions+=mM
+"set ambiwidth=double
+"set display+=lastline
