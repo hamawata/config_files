@@ -6,19 +6,57 @@ if isdirectory(expand('~/.vim/userautoload'))
     runtime! userautoload/*.vim
 endif
 
-"---------------plugin settings
-if isdirectory(expand("~/.vim/bundle/neobundle.vim/"))
+if has('nvim')
+"" dein settings
+if &compatible
+  set nocompatible
+endif
+" dein.vimのディレクトリ
+let s:dein_dir = expand('~/.cache/dein')
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
-if has('vim_starting')
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
+" なければgit clone
+if !isdirectory(s:dein_repo_dir)
+  execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+endif
+execute 'set runtimepath^=' . s:dein_repo_dir
+
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
+
+  " 管理するプラグインを記述したファイル
+  let s:toml = '~/.dein.toml'
+  let s:lazy_toml = '~/.dein_lazy.toml'
+  call dein#load_toml(s:toml, {'lazy': 0})
+  call dein#load_toml(s:lazy_toml, {'lazy': 1})
+
+  call dein#end()
+  call dein#save_state()
+endif
+" プラグインの追加・削除やtomlファイルの設定を変更した後は
+" 適宜 call dein#update や call dein#clear_state を呼んでください。
+" そもそもキャッシュしなくて良いならload_state/save_stateを呼ばないようにしてください。
+
+" 2016.04.16 追記
+" load_cache -> load_state
+" save_cache -> save_state
+" となり書き方が少し変わりました。
+" 追記終わり
+
+" vimprocだけは最初にインストールしてほしい
+if dein#check_install(['vimproc'])
+  call dein#install(['vimproc'])
+endif
+" その他インストールしていないものはこちらに入れる
+if dein#check_install()
+  call dein#install()
 endif
 
-call neobundle#begin(expand('~/.vim/bundle/'))
+endif
+" -- dein
 
-NeoBundleFetch 'Shougo/neobundle.vim'
-
+"---------------plugin settings
 "neocomplcache
-NeoBundle 'Shougo/neocomplcache'
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 " Use neocomplcache.
@@ -54,8 +92,6 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 "~neocomplcache
 
 "neosnippet
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -68,33 +104,6 @@ endif
 
 let g:neosnippet#snippets_directory='~/snippets/'
 "~neosnippet
-
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'honza/vim-snippets'
-NeoBundle 'sudo.vim'
-NeoBundle 'thinca/vim-quickrun'
-"NeoBundle 'itchyny/calendar.vim'
-NeoBundle 'https://github.com/kmnk/vim-unite-giti.git'
-NeoBundle 'junegunn/vim-easy-align'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'https://github.com/leafgarland/typescript-vim.git'
-NeoBundle 'https://github.com/clausreinke/typescript-tools.git'
-NeoBundle 'Shougo/vimproc.vim', {
-\ 'build' : {
-\     'windows' : 'tools\\update-dll-mingw',
-\     'cygwin' : 'make -f make_cygwin.mak',
-\     'mac' : 'make -f make_mac.mak',
-\     'linux' : 'make',
-\     'unix' : 'gmake',
-\    },
-\ }
-NeoBundle 'Shougo/neossh.vim'
-NeoBundle 'Shougo/vimfiler'
-NeoBundle 'kana/vim-filetype-haskell'
-NeoBundle 'eagletmt/ghcmod-vim'
-
-call neobundle#end()
 
 "ctags setting to open file using tab.
 nnoremap <C-]> <C-w><C-]><C-w>T
@@ -141,11 +150,7 @@ vmap <Enter> <Plug>(EasyAlign)
 
 set tags=~/.tags
 autocmd FileType php :set dictionary=~/.vim/dict/php.dict
-endif
 "----------------~plugin setting
-
-"for tab complement
-set nocompatible
 
 "key binding
 nnoremap <Leader>ee :tabe   $MYVIMRC<CR>
@@ -164,7 +169,9 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-"set encoding=utf-8
+if !has('nvim')
+    set encoding=utf-8
+endif
 set number
 set smartindent
 set backspace=indent,eol,start
