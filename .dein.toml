@@ -53,10 +53,7 @@ repo = 'junegunn/vim-easy-align'
 repo = 'tpope/vim-surround'
 
 [[plugins]]
-repo = 'https://github.com/leafgarland/typescript-vim.git'
-
-[[plugins]]
-repo = 'https://github.com/clausreinke/typescript-tools.git'
+repo = 'clausreinke/typescript-tools.vim'
 
 [[plugins]]
 repo = 'Shougo/neossh.vim'

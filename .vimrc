@@ -21,6 +21,9 @@ if !isdirectory(s:dein_repo_dir)
 endif
 execute 'set runtimepath^=' . s:dein_repo_dir
 
+let s:deoplete_repo_dir = s:dein_dir . '/repos/github.com/Shougo/deoplete.nvim'
+execute 'set runtimepath+=' . s:deoplete_repo_dir
+
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
@@ -32,6 +35,7 @@ if dein#load_state(s:dein_dir)
 
   call dein#end()
   call dein#save_state()
+  call dein#add('Shougo/deoplete.nvim')
 endif
 " プラグインの追加・削除やtomlファイルの設定を変更した後は
 " 適宜 call dein#update や call dein#clear_state を呼んでください。
@@ -90,7 +94,8 @@ endif
 "inoremap <expr><C-y>  neocomplcache#close_popup()
 "inoremap <expr><C-e>  neocomplcache#cancel_popup()
 "~neocomplcache
-
+"
+let g:deoplete#enable_at_startup = 1
 "neosnippet
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -185,6 +190,6 @@ set number
 set smartindent
 set backspace=indent,eol,start
 set fileencodings=euc-jp,iso-2022-jp,utf-8,cp932,default,latin
-"set clipboard=unnamed,autoselect
+set clipboard+=unnamedplus
 set noswapfile
 filetype plugin indent on
