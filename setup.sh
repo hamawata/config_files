@@ -3,7 +3,7 @@
 BASE_DIR=$(cd $(dirname $0);pwd)
 
 # neovim
-[ ! -d ${HOME}/.config/nvim ] && mkdir ${HOME}/.config/nvim
+[ ! -d ${HOME}/.config/nvim ] && mkdir -p ${HOME}/.config/nvim
 [ ! -e ${HOME}/.config/nvim/init.vim ] && ln -s ${BASE_DIR}/init.vim ${HOME}/.config/nvim
 
 # vim
