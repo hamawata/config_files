@@ -66,3 +66,6 @@ repo = 'kana/vim-filetype-haskell'
 
 [[plugins]]
 repo = 'eagletmt/ghcmod-vim'
+
+[[plugins]]
+repo = 'Shougo/neoyank.vim'
