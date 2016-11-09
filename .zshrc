@@ -39,13 +39,13 @@ if [ ${UID} -eq 0 ]; then
               ;
 
 ### Title (user@hostname) ###
-case "${TERM}" in
-kterm*|xterm*|)
-  precmd() {
-          echo -ne "\033]0;${USER}@${HOST%%.*}\007"
-            }
-              ;;
-              esac
+#case "${TERM}" in
+#kterm*|xterm*|)
+#  precmd() {
+#          echo -ne "\033]0;${USER}@${HOST%%.*}\007"
+#            }
+#              ;;
+#              esac
 
 
 alias ls="ls -G"
@@ -57,3 +57,9 @@ alias gitbr="git branch"
 export PATH=/usr/local/bin:$PATH
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+# haskell settings
+export PATH="$HOME/.local/bin:$PATH"
+
+export TERM=xterm-256color
