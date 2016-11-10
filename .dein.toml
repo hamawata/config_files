@@ -69,3 +69,6 @@ repo = 'eagletmt/ghcmod-vim'
 
 [[plugins]]
 repo = 'Shougo/neoyank.vim'
+
+[[plugins]]
+repo = 'thinca/vim-ref'

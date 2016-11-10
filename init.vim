@@ -163,6 +163,10 @@ vmap <Enter> <Plug>(EasyAlign)
 
 set tags=~/.tags
 autocmd FileType php :set dictionary=~/.vim/dict/php.dict
+
+" vim-ref
+let g:ref_phpmanual_path = $HOME . '/.config/nvim/ref/php-chunked-xhtml'
+
 "----------------~plugin setting
 
 "key binding
