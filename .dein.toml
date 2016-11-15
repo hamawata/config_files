@@ -72,3 +72,6 @@ repo = 'Shougo/neoyank.vim'
 
 [[plugins]]
 repo = 'thinca/vim-ref'
+
+[[plugins]]
+repo = 'Shougo/vimshell'

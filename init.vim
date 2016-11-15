@@ -167,6 +167,9 @@ autocmd FileType php :set dictionary=~/.vim/dict/php.dict
 " vim-ref
 let g:ref_phpmanual_path = $HOME . '/.config/nvim/ref/php-chunked-xhtml'
 
+" vimshell
+nnoremap <Leader>s :VimShell<CR>
+
 "----------------~plugin setting
 
 "key binding
