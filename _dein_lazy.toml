@@ -1,0 +1,74 @@
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+on_if = 1
+on_source = ['unite.vim', 'denite.nvim']
+
+[[plugins]]
+repo = 'Shougo/neoyank.vim'
+on_if = 1
+on_event = 'TextYankPost'
+on_source = ['unite.vim', 'denite.nvim']
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+depends = ['neomru.vim']
+on_event = ['BufRead']
+hook_add = '''
+  nnoremap    [denite]   <Nop>
+  nmap    <Leader>d [denite]
+  nnoremap <silent> [denite]m :<C-u>Denite<Space>file_mru -mode=normal<CR>
+  nnoremap <silent> [denite]f :<C-u>Denite<Space>file_rec -mode=normal<CR>
+'''
+hook_source = '''
+  call denite#custom#map('insert', '<Esc>', 'enter_mode:normal')
+  call denite#custom#map('normal', '<Esc>', 'quit')
+  call denite#custom#var('grep', 'command', ['ag'])
+  call denite#custom#var('grep', 'recursive_opts', [])
+  call denite#custom#var('grep', 'final_opts', [])
+  call denite#custom#var('grep', 'separator', [])
+  call denite#custom#var('grep', 'default_opts', ['--nocolor', '--nogroup'])
+  "call denite#custom#var("file_rec", "command",
+  "  \ [ "find", "-L", ":directory",
+  "  \ "-path", "*/.svn/*", "-prune", "-o",
+  "  \ '-type', 'l', '-print', '-o',
+  "  \ '-type', 'f', '-print',
+  "  \ '-maxdepth', '1', '-mindepth', '1'])
+'''
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+depends = ['neomru.vim']
+on_event = ['BufRead']
+hook_add = '''
+  " The prefix key.
+  nnoremap    [unite]   <Nop>
+  nmap    <Leader>f [unite]
+
+  " unite.vim keymap
+  let g:unite_enable_start_insert = 0
+  nnoremap [unite]u  :<C-u>Unite -no-split<Space>
+  nnoremap <silent> [unite]d :<C-u>Unite<Space>file<CR>
+  nnoremap <silent> [unite]f :<C-u>Unite<Space>buffer<CR>
+  nnoremap <silent> [unite]b :<C-u>Unite<Space>bookmark<CR>
+  nnoremap <silent> [unite]m :<C-u>Unite<Space>file_mru<CR>
+  nnoremap <silent> [unite]r :<C-u>UniteWithBufferDir file file/new -buffer-name=file<CR>
+  nnoremap <silent> <Leader>gt :<C-u>Unite<Space>giti<CR>
+  nnoremap <silent> <Leader>gs :<C-u>Unite<Space>giti/status<CR>
+  nnoremap <silent> <Leader>gb :<C-u>Unite<Space>giti/branch<CR>
+  nnoremap <silent> <Leader>gl :<C-u>Unite<Space>giti/log<CR>
+  nnoremap <silent> <Leader>gr :<C-u>Unite<Space>giti/remote<CR>
+  nnoremap <silent> ,vr :UniteResume<CR>
+
+  nnoremap <silent> [unite]p :<C-u>Unite<Space>history/yank -default-action=yank<CR>
+
+  " unite-build map
+  nnoremap <silent> ,vb :Unite build<CR>
+  nnoremap <silent> ,vcb :Unite build:!<CR>
+  nnoremap <silent> ,vch :UniteBuildClearHighlight<CR>
+
+  " unite-grep
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--nocolor --nogroup'
+  let g:unite_source_grep_recursive_opt = ''
+  let g:unite_source_grep_max_candidates = 200
+'''
