@@ -16,8 +16,10 @@ on_event = ['BufRead']
 hook_add = '''
   nnoremap    [denite]   <Nop>
   nmap    <Leader>d [denite]
-  nnoremap <silent> [denite]m :<C-u>Denite<Space>file_mru -mode=normal<CR>
-  nnoremap <silent> [denite]f :<C-u>Denite<Space>file_rec -mode=normal<CR>
+  nnoremap <silent> [denite]m :<C-u>Denite<Space>file_mru<CR>
+  nnoremap <silent> [denite]f :<C-u>Denite<Space>file_rec<CR>
+  nnoremap <silent> [denite]g :<C-u>Denite<Space>grep<Space>-buffer-name=search-buffer-denite<CR>
+  nnoremap <silent> [denite]r :<C-u>Denite<Space>-resume<Space>-buffer-name=search-buffer-denite<CR>
 '''
 hook_source = '''
   call denite#custom#map('insert', '<Esc>', 'enter_mode:normal')
@@ -72,3 +74,10 @@ hook_add = '''
   let g:unite_source_grep_recursive_opt = ''
   let g:unite_source_grep_max_candidates = 200
 '''
+
+[[plugins]]
+repo = 'thinca/vim-scouter'
+
+[[plugins]]
+repo = 'Shougo/vimfiler.vim'
+depends = 'unite.vim'

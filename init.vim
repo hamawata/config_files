@@ -6,13 +6,13 @@ if isdirectory(expand('~/.vim/userautoload'))
     runtime! userautoload/*.vim
 endif
 
-if has('nvim')
 "" dein settings
 if &compatible
   set nocompatible
 endif
 " dein.vimのディレクトリ
-let s:dein_dir = expand('~/.cache/dein')
+let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
+let s:dein_dir = s:cache_home . '/dein'
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
 " なければgit clone
@@ -21,12 +21,12 @@ if !isdirectory(s:dein_repo_dir)
 endif
 execute 'set runtimepath^=' . s:dein_repo_dir
 
+" 管理するプラグインを記述したファイル
+let s:toml = '~/.dein.toml'
+let s:lazy_toml = '~/.dein_lazy.toml'
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
-  " 管理するプラグインを記述したファイル
-  let s:toml = '~/.dein.toml'
-  let s:lazy_toml = '~/.dein_lazy.toml'
   call dein#load_toml(s:toml, {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
@@ -43,7 +43,6 @@ if dein#check_install()
   call dein#install()
 endif
 
-endif
 " -- dein
 
 "ctags setting to open file using tab.
