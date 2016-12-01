@@ -18,7 +18,8 @@ hook_add = '''
   nmap    <Leader>d [denite]
   nnoremap <silent> [denite]m :<C-u>Denite<Space>file_mru<CR>
   nnoremap <silent> [denite]f :<C-u>Denite<Space>file_rec<CR>
-  nnoremap <silent> [denite]g :<C-u>Denite<Space>grep<Space>-buffer-name=search-buffer-denite<CR>
+  nnoremap <silent> [denite]d :<C-u>Denite<Space>directory_rec<CR>
+  nnoremap <silent> [denite]g :<C-u>Denite<Space>grep:<Space>-buffer-name=search-buffer-denite<CR>
   nnoremap <silent> [denite]r :<C-u>Denite<Space>-resume<Space>-buffer-name=search-buffer-denite<CR>
 '''
 hook_source = '''
