@@ -23,8 +23,8 @@ hook_add = '''
   nnoremap <silent> [denite]r :<C-u>Denite<Space>-resume<Space>-buffer-name=search-buffer-denite<CR>
 '''
 hook_source = '''
-  call denite#custom#map('insert', '<Esc>', 'enter_mode:normal')
-  call denite#custom#map('normal', '<Esc>', 'quit')
+  call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>')
+  call denite#custom#map('normal', '<Esc>', '<denite:quit>')
   call denite#custom#var('grep', 'command', ['ag'])
   call denite#custom#var('grep', 'recursive_opts', [])
   call denite#custom#var('grep', 'final_opts', [])
