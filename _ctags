@@ -1,0 +1,15 @@
+-R
+--langmap=php:.php.inc.php5
+--php-types=c+f+d
+--links=no
+--exclude=.svn
+--exclude=svn
+--exclude=subversion
+--exclude=img
+--exclude=htdocs
+--exclude=share
+--exclude=swf
+--exclude=tpl
+--exclude=htdocs
+--exclude=html
+--exclude=*.js

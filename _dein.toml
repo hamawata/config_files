@@ -93,3 +93,12 @@ depends = ['Shougo/context_filetype.vim']
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
+
+#[[plugins]]
+#repo = 'Shougo/neoinclude.vim'
+#depneds = ['deoplete.vim']
+
+[[plugins]]
+repo = 'tsukkee/unite-tag'
+#depneds = ['unite.vim', 'neoinclude.vim']
+depneds = ['unite.vim']

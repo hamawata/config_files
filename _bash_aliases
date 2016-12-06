@@ -1,0 +1,2 @@
+alias gitst="git status"
+alias gitbr="git branch"

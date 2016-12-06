@@ -1,27 +1,17 @@
-if filereadable("/etc/vim/vimrc.local")
-  source /etc/vim/vimrc.local
-endif
-if isdirectory(expand('~/.vim/userautoload'))
-    set runtimepath+=~/.vim/
-    runtime! userautoload/*.vim
-endif
-
 "" dein settings
 if &compatible
   set nocompatible
 endif
-" dein.vimのディレクトリ
+
 let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
 let s:dein_dir = s:cache_home . '/dein'
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
-" なければgit clone
 if !isdirectory(s:dein_repo_dir)
   execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
 endif
 execute 'set runtimepath^=' . s:dein_repo_dir
 
-" 管理するプラグインを記述したファイル
 let s:toml = '~/.dein.toml'
 let s:lazy_toml = '~/.dein_lazy.toml'
 if dein#load_state(s:dein_dir)
@@ -34,11 +24,9 @@ if dein#load_state(s:dein_dir)
   call dein#save_state()
 endif
 
-" vimprocだけは最初にインストールしてほしい
 if dein#check_install(['vimproc'])
   call dein#install(['vimproc'])
 endif
-" その他インストールしていないものはこちらに入れる
 if dein#check_install()
   call dein#install()
 endif
@@ -75,9 +63,9 @@ endif
 syntax on
 
 set expandtab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
 if !has('nvim')
     set encoding=utf-8
 endif
