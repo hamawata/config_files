@@ -33,6 +33,10 @@ endif
 
 " -- dein
 
+if filereadable(expand('~/.secret_vimrc'))
+  execute 'source' expand('~/.secret_vimrc')
+endif
+
 "ctags setting to open file using tab.
 nnoremap <C-]> <C-w><C-]><C-w>T
 
@@ -45,10 +49,16 @@ autocmd FileType php :set dictionary=~/.vim/dict/php.dict
 "----------------~plugin setting
 
 "key binding
-nnoremap <Leader>ee :tabe   $MYVIMRC<CR>
 nnoremap <Leader>es :source $MYVIMRC<CR>
-nnoremap <Leader>ed :tabe   ~/.dein.toml<CR>
-nnoremap <Leader>el :tabe   ~/.dein_lazy.toml<CR>
+
+nnoremap <Leader>ee :e   $MYVIMRC<CR>
+nnoremap <Leader>ete :tabe   $MYVIMRC<CR>
+nnoremap <Leader>ed :e   ~/.dein.toml<CR>
+nnoremap <Leader>etd :tabe   ~/.dein.toml<CR>
+nnoremap <Leader>el :e   ~/.dein_lazy.toml<CR>
+nnoremap <Leader>etl :tabe   ~/.dein_lazy.toml<CR>
+nnoremap <Leader>em :e   ~/.secret_vimrc<CR>
+nnoremap <Leader>etm :tabe   ~/.secret_vimrc<CR>
 nnoremap gc :tab sp<CR>
 "cmdline-editing
 cnoremap <C-A> <Home>
@@ -57,7 +67,10 @@ cnoremap <C-B> <Left>
 cnoremap <Esc>b <S-Left>
 cnoremap <Esc>f <S-Right>
 if has('nvim')
-    nmap <BS> <C-h>
+  nmap <BS> <C-h>
+  " :terminal
+  nnoremap <Leader>t :terminal<CR>
+  tnoremap <silent> <ESC> <C-\><C-n>
 endif
 
 syntax on
@@ -67,7 +80,7 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 if !has('nvim')
-    set encoding=utf-8
+  set encoding=utf-8
 endif
 set number
 set smartindent

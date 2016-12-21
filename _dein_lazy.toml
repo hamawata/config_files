@@ -11,6 +11,7 @@ on_source = ['unite.vim', 'denite.nvim']
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
+rev = 'ebbbbc8171f7f687cf389713979a7400750c994e'
 depends = ['neomru.vim']
 on_event = ['BufRead']
 hook_add = '''
@@ -30,12 +31,6 @@ hook_source = '''
   call denite#custom#var('grep', 'final_opts', [])
   call denite#custom#var('grep', 'separator', [])
   call denite#custom#var('grep', 'default_opts', ['--nocolor', '--nogroup'])
-  "call denite#custom#var("file_rec", "command",
-  "  \ [ "find", "-L", ":directory",
-  "  \ "-path", "*/.svn/*", "-prune", "-o",
-  "  \ '-type', 'l', '-print', '-o',
-  "  \ '-type', 'f', '-print',
-  "  \ '-maxdepth', '1', '-mindepth', '1'])
 '''
 
 [[plugins]]
@@ -82,3 +77,8 @@ repo = 'thinca/vim-scouter'
 [[plugins]]
 repo = 'Shougo/vimfiler.vim'
 depends = 'unite.vim'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+on_cmd = 'Gstatus'
+augroup = 'fugitive'
