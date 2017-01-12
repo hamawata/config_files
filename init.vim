@@ -20,6 +20,10 @@ if dein#load_state(s:dein_dir)
   call dein#load_toml(s:toml, {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
+  if filereadable(expand('~/.secret_vimrc'))
+    execute 'source' expand('~/.secret_vimrc')
+  endif
+
   call dein#end()
   call dein#save_state()
 endif
@@ -32,10 +36,6 @@ if dein#check_install()
 endif
 
 " -- dein
-
-if filereadable(expand('~/.secret_vimrc'))
-  execute 'source' expand('~/.secret_vimrc')
-endif
 
 "ctags setting to open file using tab.
 nnoremap <C-]> <C-w><C-]><C-w>T

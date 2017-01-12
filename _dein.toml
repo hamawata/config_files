@@ -84,9 +84,6 @@ repo = 'Shougo/deol.nvim'
 repo = 'Shougo/deoplete.nvim'
 hook_add = '''
   let g:deoplete#enable_at_startup = 1
-  inoremap <expr><tab> pumvisible() ? "\<C-n>" :
-        \ neosnippet#expandable_or_jumpable() ?
-        \    "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
 '''
 on_i = 1
 
@@ -108,3 +105,9 @@ repo = 'Shougo/context_filetype.vim'
 repo = 'tsukkee/unite-tag'
 #depneds = ['unite.vim', 'neoinclude.vim']
 depneds = ['unite.vim']
+
+[[plugins]]
+repo = 'mhinz/vim-signify'
+hook_add = '''
+  let g:signify_vcs_list = [ 'git', 'svn' ]
+'''
