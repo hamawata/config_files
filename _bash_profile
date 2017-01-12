@@ -1,0 +1,32 @@
+# include .bashrc if it exists
+if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+fi
+
+# include .profile if it exists
+if [ -f ~/.profile ]; then
+    . ~/.profile
+fi
+
+# the rest of this file is commented out.
+
+# set PATH so it includes user's private bin if it exists
+if [ -d ~/bin ] ; then
+    PATH=~/bin:"${PATH}"
+fi
+
+export EDITOR="vim"
+
+agent="$HOME/tmp/ssh-agent-$USER"
+if [ -S "$SSH_AUTH_SOCK" ]; then
+    case $SSH_AUTH_SOCK in
+    /tmp/*/agent.[0-9]*)
+        ln -snf "$SSH_AUTH_SOCK" $agent && export SSH_AUTH_SOCK=$agent
+    esac
+elif [ -S $agent ]; then
+    export SSH_AUTH_SOCK=$agent
+#else
+#    echo "no ssh-agent"
+fi
+
+TERM=screen-256color

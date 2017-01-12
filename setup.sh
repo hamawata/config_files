@@ -4,6 +4,7 @@ BASE_DIR=$(cd $(dirname $0);pwd)
 
 # bash
 [ ! -f ${HOME}/.bash_aliases ] && ln -sf ${BASE_DIR}/_bash_aliases ${HOME}/.bash_aliases
+[ ! -f ${HOME}/.bash_profile ] && ln -sf ${BASE_DIR}/_bash_profile ${HOME}/.bash_profile
 
 # neovim
 [ ! -d ${HOME}/.config/nvim ] && mkdir -p ${HOME}/.config/nvim
