@@ -17,6 +17,9 @@ BASE_DIR=$(cd $(dirname $0);pwd)
 # vim
 [ ! -f ${HOME}/.vimrc ] && ln -sf ${BASE_DIR}/_vimrc ${HOME}/.vimrc
 
+# gvim
+[ ! -f ${HOME}/.gvimrc ] && ln -sf ${BASE_DIR}/_gvimrc ${HOME}/.gvimrc
+
 # tmux
 [ ! -f ${HOME}/.tmux.conf ] && ln -sf ${BASE_DIR}/_tmux.conf ${HOME}/.tmux.conf
 

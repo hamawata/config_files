@@ -1,0 +1,5 @@
+colorscheme evening
+set guifont=Monaco:h12
+nnoremap <Leader>gg :e      $MYGVIMRC<CR>
+nnoremap <Leader>gs :source $MYGVIMRC<CR>
+set clipboard=unnamed,autoselect
