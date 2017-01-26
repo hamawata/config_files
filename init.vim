@@ -49,10 +49,13 @@ autocmd FileType php :set dictionary=~/.vim/dict/php.dict
 "----------------~plugin setting
 
 "key binding
-nnoremap <Leader>es :source $MYVIMRC<CR>
+if $MYVIMRC_REAL == ""
+  let $MYVIMRC_REAL = $MYVIMRC
+endif
+nnoremap <Leader>es :source $MYVIMRC_REAL<CR>
 
-nnoremap <Leader>ee :e   $MYVIMRC<CR>
-nnoremap <Leader>ete :tabe   $MYVIMRC<CR>
+nnoremap <Leader>ee :e   $MYVIMRC_REAL<CR>
+nnoremap <Leader>ete :tabe   $MYVIMRC_REAL<CR>
 nnoremap <Leader>ed :e   ~/.dein.toml<CR>
 nnoremap <Leader>etd :tabe   ~/.dein.toml<CR>
 nnoremap <Leader>el :e   ~/.dein_lazy.toml<CR>

@@ -15,7 +15,7 @@ BASE_DIR=$(cd $(dirname $0);pwd)
 [ ! -d ${HOME}/.config/nvim/after/ftplugin ] && ln -sf ${BASE_DIR}/ftplugin ${HOME}/.config/nvim/after/
 
 # vim
-[ ! -f ${HOME}/.vimrc ] && ln -sf ${BASE_DIR}/_vimrc ${HOME}/.vimrc
+[ ! -f ${HOME}/.vimrc ] && ln -fs ${BASE_DIR}/_vimrc ${HOME}/.vimrc
 
 # gvim
 [ ! -f ${HOME}/.gvimrc ] && ln -sf ${BASE_DIR}/_gvimrc ${HOME}/.gvimrc
