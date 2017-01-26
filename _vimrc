@@ -1,4 +1,4 @@
-if version >= 800 || has('nvim')
+if version >= 740 || has('nvim')
   let $MYVIMRC_REAL = fnamemodify(resolve(expand("<sfile>:p")), ':h') . '/init.vim'
 else
   let $MYVIMRC_REAL = fnamemodify(resolve(expand("<sfile>:p")), ':h') . '/_vimrc_real'

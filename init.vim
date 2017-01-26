@@ -78,6 +78,10 @@ endif
 
 syntax on
 
+if !has('python3')
+  set pythonthreedll=~/.pyenv/shims/python3
+endif
+
 set expandtab
 set shiftwidth=2
 set softtabstop=2

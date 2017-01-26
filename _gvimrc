@@ -1,5 +1,11 @@
 colorscheme evening
-set guifont=Monaco:h12
-nnoremap <Leader>gg :e      $MYGVIMRC<CR>
-nnoremap <Leader>gs :source $MYGVIMRC<CR>
+nnoremap <Leader>ege :e      $MYGVIMRC<CR>
+nnoremap <Leader>egs :source $MYGVIMRC<CR>
 set clipboard=unnamed,autoselect
+if has('gui_macvim')
+  set transparency=10
+  set lines=40 columns=120
+  set guifont=Monaco:h12
+endif
+set pythonthreedll=/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/Python
+set nobackup
