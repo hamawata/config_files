@@ -1,2 +1,4 @@
-alias gitst="git status"
-alias gitbr="git branch"
+alias gitst='git status'
+alias gitbr='git branch'
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'
