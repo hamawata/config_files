@@ -33,9 +33,16 @@ repo = 'sudo.vim'
 repo = 'thinca/vim-quickrun'
 hook_add = '''
 nnoremap <Leader>qa :QuickRun -args
+let g:quickrun_config = {}
 let g:quickrun_config = {
-      \  'python':{'command': 'python3'}
-      \}
+      \   "_":{
+      \     'runner': 'vimproc',
+      \     'runner/vimproc/updatetime' : 100
+      \   },
+      \   "python":{"command": "python3"}
+      \ }
+let g:quickrun_config.python = get(g:, 'quickrun_config.python', {})
+let g:quickrun_config.python.command = 'python3'
 '''
 
 [[plugins]]
@@ -98,6 +105,9 @@ if   = '''! has('nvim')'''
 
 [[plugins]]
 repo = 'cespare/vim-toml'
+
+[[plugins]]
+repo = 'evidens/vim-twig'
 
 [[plugins]]
 repo = 'osyo-manga/vim-precious'

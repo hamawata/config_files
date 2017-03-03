@@ -30,6 +30,7 @@ hook_source = '''
   call denite#custom#var('grep', 'final_opts', [])
   call denite#custom#var('grep', 'separator', [])
   call denite#custom#var('grep', 'default_opts', ['--nocolor', '--nogroup'])
+  call denite#custom#var('grep', 'pattern_opt', [])
 '''
 
 [[plugins]]
