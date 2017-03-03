@@ -9,3 +9,4 @@ if has('gui_macvim')
 endif
 set pythonthreedll=/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/Python
 set nobackup
+set undodir=$HOME/.vim/undodir
