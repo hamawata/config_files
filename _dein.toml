@@ -85,7 +85,12 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'ujihisa/vimshell-ssh'
+depends = ['Shougo/vimshell']
+
+[[plugins]]
 repo = 'Shougo/deol.nvim'
+if   = ''' has('nvim')'''
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'

@@ -1,3 +1,7 @@
+" python3を使うためのおまじない
+if has('python3')
+endif
+
 colorscheme evening
 nnoremap <Leader>ege :e      $MYGVIMRC<CR>
 nnoremap <Leader>egs :source $MYGVIMRC<CR>
@@ -6,7 +10,7 @@ if has('gui_macvim')
   set transparency=10
   set lines=40 columns=120
   set guifont=Monaco:h12
+  let $PYTHON3_DLL="/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/Python"
 endif
-set pythonthreedll=/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/Python
 set nobackup
 set undodir=$HOME/.vim/undodir
