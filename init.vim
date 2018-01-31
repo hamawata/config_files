@@ -5,6 +5,7 @@ endif
 
 let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
 let s:dein_dir = s:cache_home . '/dein'
+let g:dein_dir = s:dein_dir
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
 if !isdirectory(s:dein_repo_dir)
@@ -28,9 +29,9 @@ if dein#load_state(s:dein_dir)
   call dein#save_state()
 endif
 
-if dein#check_install(['vimproc'])
-  call dein#install(['vimproc'])
-endif
+"if dein#check_install(['vimproc'])
+"  call dein#install(['vimproc'])
+"endif
 if dein#check_install()
   call dein#install()
 endif
@@ -91,4 +92,5 @@ set backspace=indent,eol,start
 set fileencodings=euc-jp,iso-2022-jp,utf-8,cp932,default,latin
 "set clipboard+=unnamedplus
 set noswapfile
+set nofixeol
 filetype plugin indent on

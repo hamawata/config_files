@@ -14,7 +14,7 @@ hook_add = '''
   if has('conceal')
     set conceallevel=2 concealcursor=niv
   endif
-  let g:neosnippet#snippets_directory='~/snippets/'
+  let g:neosnippet#snippets_directory='~/snippets/,' . g:dein_dir . '/repos/github.com/honza/vim-snippets/snippets/'
 '''
 on_i  = 1
 on_ft = ['snippet']
@@ -27,7 +27,7 @@ depends = ['neosnippet']
 repo = 'honza/vim-snippets'
 
 [[plugins]]
-repo = 'sudo.vim'
+repo = 'vim-scripts/sudo.vim'
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
@@ -68,6 +68,9 @@ repo = 'Shougo/neossh.vim'
 
 [[plugins]]
 repo = 'kana/vim-filetype-haskell'
+
+[[plugins]]
+repo = 'posva/vim-vue'
 
 [[plugins]]
 repo = 'eagletmt/ghcmod-vim'
@@ -135,3 +138,7 @@ repo = 'mhinz/vim-signify'
 hook_add = '''
   let g:signify_vcs_list = [ 'git', 'svn' ]
 '''
+
+# エラーが多いのでdisable
+#[[plugins]]
+#repo = 'padawan-php/deoplete-padawan'

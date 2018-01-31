@@ -15,6 +15,10 @@ if [ -d ~/bin ] ; then
     PATH=~/bin:"${PATH}"
 fi
 
+if [ -d ~/.composer/vendor/bin ] ; then
+    PATH=~/.composer/vendor/bin:"${PATH}"
+fi
+
 export EDITOR="vim"
 
 agent="$HOME/tmp/ssh-agent-$USER"
