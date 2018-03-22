@@ -74,6 +74,7 @@ if has('nvim')
   nmap <BS> <C-h>
   " :terminal
   nnoremap <Leader>t :terminal<CR>
+  nnoremap <Leader>T :tabe<CR>:terminal<CR>
   tnoremap <silent> <ESC> <C-\><C-n>
 endif
 
