@@ -20,7 +20,7 @@ hook_add = '''
   nnoremap <silent> [denite]f :<C-u>DeniteProjectDir<Space>file_rec<Space>-path=`expand('%:p')`<CR>
   nnoremap <silent> [denite]b :<C-u>Denite<Space>buffer<CR>
   nnoremap <silent> [denite]d :<C-u>DeniteBufferDir<Space>-mode=normal<Space>file<Space>file:new<CR>
-  nnoremap <silent> [denite]g :<C-u>Denite<Space>grep:<Space>-buffer-name=search-buffer-denite<CR>
+  nnoremap <silent> [denite]g :<C-u>DeniteProjectDir<Space>grep:<Space>-buffer-name=search-buffer-denite<Space>-path=`expand('%:p')`<CR>
   nnoremap <silent> [denite]r :<C-u>Denite<Space>-resume<Space>-buffer-name=search-buffer-denite<CR>
 '''
 hook_source = '''
@@ -56,11 +56,6 @@ hook_add = '''
   nnoremap <silent> [unite]b :<C-u>Unite<Space>bookmark<CR>
   nnoremap <silent> [unite]m :<C-u>Unite<Space>file_mru<CR>
   nnoremap <silent> [unite]r :<C-u>UniteWithBufferDir file file/new -buffer-name=file<CR>
-  nnoremap <silent> <Leader>gt :<C-u>Unite<Space>giti<CR>
-  nnoremap <silent> <Leader>gs :<C-u>Unite<Space>giti/status<CR>
-  nnoremap <silent> <Leader>gb :<C-u>Unite<Space>giti/branch<CR>
-  nnoremap <silent> <Leader>gl :<C-u>Unite<Space>giti/log<CR>
-  nnoremap <silent> <Leader>gr :<C-u>Unite<Space>giti/remote<CR>
   nnoremap <silent> ,vr :UniteResume<CR>
 
   nnoremap <silent> [unite]p :<C-u>Unite<Space>history/yank -default-action=yank<CR>
@@ -83,8 +78,3 @@ repo = 'thinca/vim-scouter'
 [[plugins]]
 repo = 'Shougo/vimfiler.vim'
 depends = 'unite.vim'
-
-[[plugins]]
-repo = 'tpope/vim-fugitive'
-on_cmd = 'Gstatus'
-augroup = 'fugitive'
