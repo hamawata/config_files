@@ -91,7 +91,7 @@ set number
 set smartindent
 set backspace=indent,eol,start
 set fileencodings=euc-jp,iso-2022-jp,utf-8,cp932,default,latin
-"set clipboard+=unnamedplus
+set clipboard+=unnamedplus
 set noswapfile
 set nofixeol
 filetype plugin indent on

@@ -1,4 +1,4 @@
-" python3を使うためのおまじない
+" MacVim-KaoriYaではpythonが片方しか使えないのでpython3を先に呼び出す
 if has('python3')
 endif
 
