@@ -1,14 +1,49 @@
-snippet     error_log
-    error_log(${1:message});
+snippet  provider_3
+	/**
+	 * @dataProvider provider_test_$1
+	 */
+	public function test_${1:method}(${2:args}, $expected)
+	{
+		$ret = $this->mod->$1($2);
+		$this->assertSame($expected, $ret);
+	}
 
-snippet     provider
-    /**
-     * @dataProvider provider_$1
-     */
-    public function ${1:testMethod}()
-    {
-    }
+	public function provider_test_$1()
+	{
+		return [
+			[
+				$2,
+				$expected,
+			],
+		];
+	}
 
-    public function provider_$1()
-    {
-    }
+snippet  with
+	/**
+	 * with$1
+	 *
+	 * @param ${2:valueobject} $${3:variable}
+	 * @return self
+	 */
+	public function with${1:name}($2 $$3)
+	{
+		$new = clone $this;
+		$new->$3 = $$3;
+		return $new;
+	}${4}
+
+snippet	 out_stream
+	fwrite(STDOUT, ${1:output});
+
+# Class Variable - post doc
+snippet mdoc_vp
+	/**
+	 * @var ${1:string}
+	 */${2}
+
+# Class Variable
+snippet mdoc_v
+	/**
+	 * @var ${3:string}
+	 */
+	${1:protected} $${2};${3}
