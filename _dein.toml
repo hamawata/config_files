@@ -120,6 +120,9 @@ repo = 'evidens/vim-twig'
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
 depends = ['Shougo/context_filetype.vim']
+hook_add = '''
+let g:context_filetype#search_offset = 500
+'''
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
@@ -139,10 +142,6 @@ hook_add = '''
   let g:signify_vcs_list = [ 'git', 'svn' ]
 '''
 
-# エラーが多いのでdisable
-#[[plugins]]
-#repo = 'padawan-php/deoplete-padawan'
-
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 hook_add = '''
@@ -155,3 +154,22 @@ nnoremap <silent> [fugitive]b :Gblame<CR>
 nnoremap <silent> [fugitive]d :Gdiff<CR>
 nnoremap <silent> [fugitive]m :Gmerge<CR>
 '''
+
+# 閉じ括弧を自動で補完
+[[plugins]]
+repo = 'cohama/lexima.vim'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+hook_add = '''
+  let g:airline_extensions = ['ale', 'branch']
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+
+[[plugins]]
+repo = 'martinda/Jenkinsfile-vim-syntax'
+
+[[plugins]]
+repo = 'Shougo/defx.nvim'

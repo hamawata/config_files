@@ -20,8 +20,10 @@ hook_add = '''
   nnoremap <silent> [denite]f :<C-u>DeniteProjectDir<Space>file_rec<Space>-path=`expand('%:p')`<CR>
   nnoremap <silent> [denite]b :<C-u>Denite<Space>buffer<CR>
   nnoremap <silent> [denite]d :<C-u>DeniteBufferDir<Space>-mode=normal<Space>file<Space>file:new<CR>
+  nnoremap <silent> [denite]c :<C-u>Denite<Space>-mode=normal<Space>file<Space>file:new<CR>
   nnoremap <silent> [denite]g :<C-u>DeniteProjectDir<Space>grep:<Space>-buffer-name=search-buffer-denite<Space>-path=`expand('%:p')`<CR>
   nnoremap <silent> [denite]r :<C-u>Denite<Space>-resume<Space>-buffer-name=search-buffer-denite<CR>
+  nnoremap <silent> [denite]y :<C-u>Denite<Space>neoyank<CR>
 '''
 hook_source = '''
   call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>')
@@ -78,3 +80,40 @@ repo = 'thinca/vim-scouter'
 [[plugins]]
 repo = 'Shougo/vimfiler.vim'
 depends = 'unite.vim'
+
+[[plugins]]
+repo = 'lvht/phpcd.vim'
+build = 'php7 /usr/local/bin/composer install'
+on_ft = 'php'
+hook_add = '''
+let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
+let g:deoplete#ignore_sources.php = ['omni']
+let g:phpcd_auto_restart = 1
+nnoremap <C-\> :<C-u>call phpcd#JumpToDefinition('split')<CR><C-w>T
+'''
+hook_post_source = '''
+let g:phpcd_php_cli_executable = 'php7'
+'''
+
+[[plugins]]
+repo = 'ternjs/tern_for_vim'
+build = 'npm install'
+on_ft = 'javascript'
+
+[[plugins]]
+repo = 'alvan/vim-closetag'
+on_ft = ['html', 'vue']
+hook_add = '''
+  let g:closetag_filenames = '*.html,*.vue,*.twig'
+'''
+
+# lint
+[[plugins]]
+repo = 'w0rp/ale'
+on_ft = ['php']
+hook_add = '''
+  let g:ale_lint_on_text_changed = 0
+  let g:airline#extensions#ale#enabled = 1
+  let g:airline#extensions#ale#error_symbol = 'E:'
+  let g:airline#extensions#ale#warning_symbol = 'W:'
+'''

@@ -39,12 +39,12 @@ endif
 " -- dein
 
 "ctags setting to open file using tab.
-nnoremap <C-]> <C-w><C-]><C-w>T
+"nnoremap <C-]> <C-w><C-]><C-w>T
 
 " vinarise
 let g:vinarise_enable_auto_detect = 1
 
-set tags=~/.tags
+"set tags=~/.tags
 autocmd FileType php :set dictionary=~/.vim/dict/php.dict
 
 "----------------~plugin setting

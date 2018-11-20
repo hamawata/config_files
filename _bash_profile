@@ -34,3 +34,4 @@ elif [ -S $agent ]; then
 fi
 
 TERM=screen-256color
+[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
