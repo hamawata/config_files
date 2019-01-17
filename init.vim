@@ -76,6 +76,8 @@ if has('nvim')
   nnoremap <Leader>t :terminal<CR>
   nnoremap <Leader>T :tabe<CR>:terminal<CR>
   tnoremap <silent> <ESC> <C-\><C-n>
+
+  set inccommand=split
 endif
 
 syntax on
@@ -95,3 +97,4 @@ set clipboard+=unnamedplus
 set noswapfile
 set nofixeol
 filetype plugin indent on
+colorscheme desert
