@@ -174,6 +174,9 @@ repo = 'martinda/Jenkinsfile-vim-syntax'
 [[plugins]]
 repo = 'Shougo/defx.nvim'
 hook_add = '''
+nnoremap <Leader>xd :<C-u>Defx `expand('%:p:h')` -search=`expand('%:p')`<CR>
+nnoremap <Leader>xc :<C-u>Defx<CR>
+
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
   " Define mappings
@@ -234,6 +237,7 @@ function! s:defx_my_settings() abort
 endfunction
 '''
 
+# symlink先のファイルをindexできないのでしばらくはphpcdを使う
 #[[plugins]]
 #repo = 'autozimu/LanguageClient-neovim'
 #rev = 'next'
@@ -241,5 +245,17 @@ endfunction
 #hook_add = '''
 #let g:LanguageClient_serverCommands = {
 #    \ 'vue': ['vls'],
+#    \ 'php': ['php7', '/home/ubuntu/.composer7/vendor/felixfbecker/language-server/bin/php-language-server.php'],
 #    \ }
+#
+#nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+#nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+#"nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 #'''
+
+# composerでglobal requireしたものを使うのでコメントアウト
+#[[plugins]]
+#repo = 'roxma/LanguageServer-php-neovim'
+#on_ft = ['php']
+#build = 'php7 /usr/local/bin/composer install && php7 /usr/local/bin/composer run-script parse-stubs'
+#depends = ['LanguageClient-neovim']
