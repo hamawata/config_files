@@ -11,13 +11,14 @@ on_source = ['unite.vim', 'denite.nvim']
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
+rev = '2.1'
 depends = ['neomru.vim']
 on_event = ['BufRead']
 hook_add = '''
   nnoremap    [denite]   <Nop>
   nmap    <Leader>d [denite]
   nnoremap <silent> [denite]m :<C-u>Denite<Space>file_mru<CR>
-  nnoremap <silent> [denite]f :<C-u>DeniteProjectDir<Space>file_rec<Space>-path=`expand('%:p')`<CR>
+  nnoremap <silent> [denite]f :<C-u>DeniteProjectDir<Space>file/rec<Space>-path=`expand('%:p')`<CR>
   nnoremap <silent> [denite]b :<C-u>Denite<Space>buffer<CR>
   nnoremap <silent> [denite]d :<C-u>DeniteBufferDir<Space>-mode=normal<Space>file<Space>file:new<CR>
   nnoremap <silent> [denite]c :<C-u>Denite<Space>-mode=normal<Space>file<Space>file:new<CR>
@@ -35,7 +36,7 @@ hook_source = '''
   call denite#custom#var('grep', 'separator', [])
   call denite#custom#var('grep', 'default_opts', ['--nocolor', '--nogroup'])
   call denite#custom#var('grep', 'pattern_opt', [])
-	call denite#custom#var('file_rec', 'command',
+	call denite#custom#var('file/rec', 'command',
 	\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 	call denite#custom#var('directory_rec', 'command',
 	\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
