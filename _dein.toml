@@ -159,14 +159,8 @@ nnoremap <silent> [fugitive]m :Gmerge<CR>
 [[plugins]]
 repo = 'cohama/lexima.vim'
 
-#[[plugins]]
-#repo = 'vim-airline/vim-airline'
-#hook_add = '''
-#  let g:airline_extensions = ['ale', 'branch']
-#'''
-#
-#[[plugins]]
-#repo = 'vim-airline/vim-airline-themes'
+[[plugins]]
+repo = 'itchyny/lightline.vim'
 
 [[plugins]]
 repo = 'martinda/Jenkinsfile-vim-syntax'
