@@ -111,10 +111,7 @@ hook_add = '''
 # lint
 [[plugins]]
 repo = 'w0rp/ale'
-on_ft = ['php']
+on_ft = ['php', 'python']
 hook_add = '''
   let g:ale_lint_on_text_changed = 0
-  let g:airline#extensions#ale#enabled = 1
-  let g:airline#extensions#ale#error_symbol = 'E:'
-  let g:airline#extensions#ale#warning_symbol = 'W:'
 '''
