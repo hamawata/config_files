@@ -39,7 +39,7 @@ let g:quickrun_config = {
       \     'runner': 'vimproc',
       \     'runner/vimproc/updatetime' : 100
       \   },
-      \   "python":{"command": "python3"}
+      \   "python":{"command": "python"}
       \ }
 let g:quickrun_config.python = get(g:, 'quickrun_config.python', {})
 let g:quickrun_config.python.command = 'python3'
@@ -231,35 +231,30 @@ function! s:defx_my_settings() abort
 endfunction
 '''
 
-# symlink先のファイルをindexできないのでしばらくはphpcdを使う
 [[plugins]]
-repo = 'autozimu/LanguageClient-neovim'
-rev = 'next'
-build = 'bash install.sh'
+repo = 'prabirshrestha/async.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
 hook_add = '''
-let g:LanguageClient_serverCommands = {
-    \ 'vue': ['vls'],
-    \ 'python': ['pyls']
-    \ }
-
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-"nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+let g:lsp_diagnostics_enabled = 0
+" debug
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/log/vim-lsp.log')
+let g:asyncomplete_log_file = expand('~/log/asyncomplete.log')
+if executable('pyls')
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'whitelist': ['python'],
+        \ })
+endif
+nnoremap <silent> K :LspHover<CR>
+nnoremap <silent> <C-]> :LspDefinition<CR>
 '''
-#hook_add = '''
-#let g:LanguageClient_serverCommands = {
-#    \ 'vue': ['vls'],
-#    \ 'php': ['php7', '/home/ubuntu/.composer7/vendor/felixfbecker/language-server/bin/php-language-server.php'],
-#    \ }
-#
-#nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-#nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-#"nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-#'''
 
-# composerでglobal requireしたものを使うのでコメントアウト
-#[[plugins]]
-#repo = 'roxma/LanguageServer-php-neovim'
-#on_ft = ['php']
-#build = 'php7 /usr/local/bin/composer install && php7 /usr/local/bin/composer run-script parse-stubs'
-#depends = ['LanguageClient-neovim']
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
