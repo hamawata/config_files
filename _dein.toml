@@ -258,3 +258,12 @@ repo = 'prabirshrestha/asyncomplete.vim'
 
 [[plugins]]
 repo = 'prabirshrestha/asyncomplete-lsp.vim'
+
+[[plugins]]
+repo = 'lambdalisue/vim-pyenv'
+depends = ['vim-lsp']
+
+# lspの補完も重くなるので無効に
+# [[plugins]]
+# repo = 'tbodt/deoplete-tabnine'
+# build = './install.sh'

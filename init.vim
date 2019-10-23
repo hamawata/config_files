@@ -47,6 +47,9 @@ let g:vinarise_enable_auto_detect = 1
 "set tags=~/.tags
 autocmd FileType php :set dictionary=~/.vim/dict/php.dict
 
+" for pyenv
+let g:python3_host_prog = system('type pyenv &>/dev/null && echo -n "$(pyenv root)/versions/$(cat $(pyenv root)/version | head -n 1)/bin/python" || echo -n $(which python)')
+
 "----------------~plugin setting
 
 "key binding

@@ -5,3 +5,4 @@ set expandtab
 set smartindent
 
 let b:ale_linters = ['flake8', 'mypy']
+autocmd FileType python setlocal omnifunc=lsp#complete
