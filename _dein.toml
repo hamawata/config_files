@@ -42,7 +42,7 @@ let g:quickrun_config = {
       \   "python":{"command": "python"}
       \ }
 let g:quickrun_config.python = get(g:, 'quickrun_config.python', {})
-let g:quickrun_config.python.command = 'python3'
+let g:quickrun_config.python.command = 'python'
 '''
 
 [[plugins]]
@@ -74,6 +74,9 @@ repo = 'posva/vim-vue'
 
 [[plugins]]
 repo = 'eagletmt/ghcmod-vim'
+
+[[plugins]]
+repo = 'hashivim/vim-terraform'
 
 [[plugins]]
 repo = 'thinca/vim-ref'
@@ -165,6 +168,9 @@ repo = 'itchyny/lightline.vim'
 [[plugins]]
 repo = 'martinda/Jenkinsfile-vim-syntax'
 
+# [[plugins]]
+# repo = 'fatih/vim-go'
+
 [[plugins]]
 repo = 'Shougo/defx.nvim'
 hook_add = '''
@@ -254,6 +260,9 @@ nnoremap <silent> <C-]> :LspDefinition<CR>
 '''
 
 [[plugins]]
+repo = 'mattn/vim-lsp-settings'
+
+[[plugins]]
 repo = 'prabirshrestha/asyncomplete.vim'
 
 [[plugins]]
@@ -262,6 +271,10 @@ repo = 'prabirshrestha/asyncomplete-lsp.vim'
 [[plugins]]
 repo = 'lambdalisue/vim-pyenv'
 depends = ['vim-lsp']
+
+
+[[plugins]]
+repo = 'tpope/vim-commentary'
 
 # lspの補完も重くなるので無効に
 # [[plugins]]

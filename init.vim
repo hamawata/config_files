@@ -66,7 +66,8 @@ nnoremap <Leader>el :e   ~/.dein_lazy.toml<CR>
 nnoremap <Leader>etl :tabe   ~/.dein_lazy.toml<CR>
 nnoremap <Leader>em :e   ~/.secret_vimrc<CR>
 nnoremap <Leader>etm :tabe   ~/.secret_vimrc<CR>
-nnoremap gc :tab sp<CR>
+nnoremap gb :tab sp<CR>
+
 "cmdline-editing
 cnoremap <C-A> <Home>
 cnoremap <C-F> <Right>

@@ -82,19 +82,19 @@ repo = 'thinca/vim-scouter'
 repo = 'Shougo/vimfiler.vim'
 depends = 'unite.vim'
 
-[[plugins]]
-repo = 'lvht/phpcd.vim'
-build = 'php7 /usr/local/bin/composer install'
-on_ft = 'php'
-hook_add = '''
-let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
-let g:deoplete#ignore_sources.php = ['omni']
-let g:phpcd_auto_restart = 1
-nnoremap <C-\> :<C-u>call phpcd#JumpToDefinition('split')<CR><C-w>T
-'''
-hook_post_source = '''
-let g:phpcd_php_cli_executable = 'php7'
-'''
+# [[plugins]]
+# repo = 'lvht/phpcd.vim'
+# build = 'php7 /usr/local/bin/composer install'
+# on_ft = 'php'
+# hook_add = '''
+# let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
+# let g:deoplete#ignore_sources.php = ['omni']
+# let g:phpcd_auto_restart = 1
+# nnoremap <C-\> :<C-u>call phpcd#JumpToDefinition('split')<CR><C-w>T
+# '''
+# hook_post_source = '''
+# let g:phpcd_php_cli_executable = 'php7'
+# '''
 
 [[plugins]]
 repo = 'ternjs/tern_for_vim'
@@ -107,6 +107,10 @@ on_ft = ['html', 'vue']
 hook_add = '''
   let g:closetag_filenames = '*.html,*.vue,*.twig'
 '''
+
+[[plugins]]
+repo = 'Vimjas/vim-python-pep8-indent'
+on_ft = 'python'
 
 # lint
 [[plugins]]
