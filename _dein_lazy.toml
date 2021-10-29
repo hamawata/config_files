@@ -16,14 +16,14 @@ on_event = ['BufRead']
 hook_add = '''
   nnoremap    [denite]   <Nop>
   nmap    <Leader>d [denite]
-  nnoremap <silent> [denite]m :<C-u>Denite<Space>file_mru<CR>
-  nnoremap <silent> [denite]f :<C-u>DeniteProjectDir<Space>file/rec<Space>-path=`expand('%:p')`<CR>
-  nnoremap <silent> [denite]b :<C-u>Denite<Space>buffer<CR>
+  nnoremap <silent> [denite]m :<C-u>Denite<Space>file_mru<Space>-start-filter<CR>
+  nnoremap <silent> [denite]f :<C-u>DeniteProjectDir<Space>file/rec<Space>-path=`expand('%:p')`<Space>-start-filter<CR>
+  nnoremap <silent> [denite]b :<C-u>Denite<Space>buffer<Space>-start-filter<CR>
   nnoremap <silent> [denite]d :<C-u>DeniteBufferDir<Space>file<Space>file:new<CR>
   nnoremap <silent> [denite]c :<C-u>Denite<Space>file<Space>file:new<CR>
-  nnoremap <silent> [denite]g :<C-u>DeniteProjectDir<Space>grep:<Space>-buffer-name=search-buffer-denite<Space>-path=`expand('%:p')`<CR>
-  nnoremap <silent> [denite]r :<C-u>Denite<Space>-resume<Space>-buffer-name=search-buffer-denite<CR>
-  nnoremap <silent> [denite]y :<C-u>Denite<Space>neoyank<CR>
+  nnoremap <silent> [denite]g :<C-u>DeniteProjectDir<Space>grep:<Space>-buffer-name=search-buffer-denite<Space>-path=`expand('%:p')`<Space>-start-filter<CR>
+  nnoremap <silent> [denite]r :<C-u>Denite<Space>-resume<Space>-buffer-name=search-buffer-denite<Space>-start-filter<CR>
+  nnoremap <silent> [denite]y :<C-u>Denite<Space>neoyank<Space>-start-filter<CR>
   " Define mappings
   autocmd FileType denite call s:denite_my_settings()
   function! s:denite_my_settings() abort
@@ -44,9 +44,13 @@ hook_add = '''
     nnoremap <silent><buffer><expr> <Tab>
     \ denite#do_map('choose_action')
     nnoremap <silent><buffer><expr> <C-o>
-    \ denite#do_map('nop')
+    \ denite#do_map('redraw')
     nnoremap <silent><buffer><expr> <Esc>
     \ denite#do_map('quit')
+    nnoremap <silent><buffer><expr> a
+    \ denite#do_map('open_filter_buffer')
+    nnoremap <silent><buffer><expr> t
+    \ denite#do_map('do_action', 'tabopen')
   endfunction
 
 	autocmd FileType denite-filter call s:denite_filter_my_settings()
