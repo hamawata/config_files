@@ -150,12 +150,12 @@ repo = 'tpope/vim-fugitive'
 hook_add = '''
 nnoremap [fugitive]  <Nop>
 nmap <space>g [fugitive]
-nnoremap <silent> [fugitive]s :Gstatus<CR><C-w>T
+nnoremap <silent> [fugitive]s :Git<CR>
 nnoremap <silent> [fugitive]a :Gwrite<CR>
-nnoremap <silent> [fugitive]c :Gcommit-v<CR>
-nnoremap <silent> [fugitive]b :Gblame<CR>
+nnoremap <silent> [fugitive]c :Git commit<CR>
+nnoremap <silent> [fugitive]b :Git blame<CR>
 nnoremap <silent> [fugitive]d :Gdiff<CR>
-nnoremap <silent> [fugitive]m :Gmerge<CR>
+nnoremap <silent> [fugitive]m :Git merge<CR>
 '''
 
 # 閉じ括弧を自動で補完
