@@ -81,6 +81,8 @@ if has('nvim')
   nnoremap <Leader>T :tabe<CR>:terminal<CR>
   tnoremap <silent> <ESC> <C-\><C-n>
 
+  autocmd TermOpen * setlocal nonumber
+
   set inccommand=split
 endif
 
