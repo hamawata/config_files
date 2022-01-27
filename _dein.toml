@@ -33,6 +33,7 @@ repo = 'vim-scripts/sudo.vim'
 repo = 'thinca/vim-quickrun'
 hook_add = '''
 nnoremap <Leader>qa :QuickRun -args
+nnoremap <Leader>r :QuickRun<CR>
 let g:quickrun_config = {}
 let g:quickrun_config = {
       \   "_":{
@@ -192,6 +193,8 @@ function! s:defx_my_settings() abort
   \ defx#do_action('open')
   nnoremap <silent><buffer><expr> E
   \ defx#do_action('open', 'vsplit')
+  nnoremap <silent><buffer><expr> t
+  \ defx#do_action('open', 'tabe')
   nnoremap <silent><buffer><expr> P
   \ defx#do_action('open', 'pedit')
   nnoremap <silent><buffer><expr> K

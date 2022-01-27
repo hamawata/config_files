@@ -21,10 +21,6 @@ if dein#load_state(s:dein_dir)
   call dein#load_toml(s:toml, {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
-  if filereadable(expand('~/.secret_vimrc'))
-    execute 'source' expand('~/.secret_vimrc')
-  endif
-
   call dein#end()
   call dein#save_state()
 endif
@@ -34,6 +30,10 @@ endif
 "endif
 if dein#check_install()
   call dein#install()
+endif
+
+if filereadable(expand('~/.secret_vimrc'))
+  execute 'source' expand('~/.secret_vimrc')
 endif
 
 " -- dein
@@ -98,7 +98,8 @@ endif
 set number
 set smartindent
 set backspace=indent,eol,start
-set fileencodings=euc-jp,iso-2022-jp,utf-8,cp932,default,latin
+" set fileencodings=euc-jp,iso-2022-jp,utf-8,cp932,default,latin
+set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932,default,latin
 set clipboard+=unnamedplus
 set noswapfile
 set nofixeol
