@@ -33,5 +33,4 @@ elif [ -S $agent ]; then
 #    echo "no ssh-agent"
 fi
 
-TERM=screen-256color
 [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
