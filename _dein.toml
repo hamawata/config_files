@@ -286,4 +286,3 @@ repo = 'tpope/vim-commentary'
 
 [[plugins]]
 repo = 'github/copilot.vim'
-rev = 'v1.10.2'
