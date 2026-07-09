@@ -18,4 +18,12 @@ vim.opt.inccommand = 'split'
 --   uv venv ~/.local/share/nvim-python --python 3.12
 --   uv pip install --python ~/.local/share/nvim-python/bin/python --exclude-newer "1 week" pynvim
 -- (re-run the second command to recreate the venv after a rm -rf)
-vim.g.python3_host_prog = vim.fn.expand('~/.local/share/nvim-python/bin/python')
+--
+-- this file is synced to every machine via dotfiles, but the venv itself is
+-- local and machine-specific (not committed), so only point at it if it was
+-- actually set up here -- an unconditional assignment would make denite.nvim
+-- try to spawn a nonexistent python3 host on every other machine
+local nvim_python = vim.fn.expand('~/.local/share/nvim-python/bin/python')
+if vim.fn.executable(nvim_python) == 1 then
+  vim.g.python3_host_prog = nvim_python
+end
