@@ -7,9 +7,9 @@ return {
   lazy = false,
   config = function()
     require('nvim-treesitter').install({
-      'bash', 'css', 'html', 'javascript', 'json', 'lua',
-      'markdown', 'php', 'python', 'query', 'toml', 'typescript',
-      'vim', 'vimdoc',
+      'bash', 'css', 'dockerfile', 'go', 'haskell', 'html', 'javascript',
+      'json', 'lua', 'markdown', 'php', 'python', 'query', 'ruby',
+      'terraform', 'toml', 'typescript', 'vim', 'vimdoc', 'yaml',
     })
 
     vim.api.nvim_create_autocmd('FileType', {

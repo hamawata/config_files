@@ -12,6 +12,10 @@ vim.opt.swapfile = false
 vim.opt.fixendofline = false
 vim.opt.inccommand = 'split'
 
-vim.g.python3_host_prog = vim.fn.system(
-  'type pyenv &>/dev/null && echo -n "$(pyenv root)/versions/$(cat $(pyenv root)/version | head -n 1)/bin/python" || echo -n $(which python)'
-)
+-- dedicated venv (pynvim only) so remote plugins like denite/defx have a
+-- python3 host regardless of whichever python/pyenv version is active.
+-- created with:
+--   uv venv ~/.local/share/nvim-python --python 3.12
+--   uv pip install --python ~/.local/share/nvim-python/bin/python --exclude-newer "1 week" pynvim
+-- (re-run the second command to recreate the venv after a rm -rf)
+vim.g.python3_host_prog = vim.fn.expand('~/.local/share/nvim-python/bin/python')
