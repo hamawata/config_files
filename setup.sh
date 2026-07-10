@@ -8,6 +8,9 @@ BASE_DIR=$(cd $(dirname $0);pwd)
 [ ! -f ${HOME}/.bash_aliases ] && ln -sf ${BASE_DIR}/_bash_aliases ${HOME}/.bash_aliases
 [ ! -f ${HOME}/.bash_profile ] && ln -sf ${BASE_DIR}/_bash_profile ${HOME}/.bash_profile
 
+# zsh
+[ ! -f ${HOME}/.zshrc ] && ln -sf ${BASE_DIR}/_zshrc ${HOME}/.zshrc
+
 # neovim (modern lazy.nvim config; the legacy dein.vim + init.vim setup has
 # been fully ported over -- denite/defx/surround etc. now live under nvim/lua
 # -- so it's no longer symlinked here)
