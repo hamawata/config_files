@@ -15,30 +15,47 @@ setopt auto_cd
 setopt auto_pushd
 setopt no_beep
 autoload -U colors; colors
-# 一般ユーザ時
-tmp_prompt="%{${fg[cyan]}%}%n%# %{${reset_color}%}"
+setopt prompt_subst
+
+# git branch (vcs_info is zsh's built-in, faster/more correct than a
+# hand-rolled `git branch` parse; message is empty outside a git repo)
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git:*' formats "%{${fg[green]}%} (%b)%{${reset_color}%}"
+precmd() { vcs_info }
+
+# ssh-add -l summary (key count, 🔑 icon); empty when no agent or no keys
+# loaded, so it doesn't clutter the prompt when unused
+ssh_agent_prompt_info() {
+  local n
+  n=$(ssh-add -l 2>/dev/null | grep -c '^')
+  [ "$n" -gt 0 ] 2>/dev/null && print -n "%{${fg[yellow]}%} \U0001F511${n}%{${reset_color}%}"
+}
+
+# SSHログイン時は先頭にホスト名を追加
+tmp_host_prefix=""
+[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
+  tmp_host_prefix="%{${fg[white]}%}${HOST%%.*} %{${reset_color}%}"
+
+# 1行にディレクトリ/git/sshキー/ユーザーを詰める。右プロンプト(RPROMPT)は
+# 使わない -- コピペ時に右側のテキストが混ざるのが煩わしかったため
+tmp_prompt=${tmp_host_prefix}'%{${fg[blue]}%}%~%{${reset_color}%}${vcs_info_msg_0_}$(ssh_agent_prompt_info) %{${fg[cyan]}%}%n%# %{${reset_color}%}'
 tmp_prompt2="%{${fg[cyan]}%}%_> %{${reset_color}%}"
-tmp_rprompt="%{${fg[green]}%}[%~]%{${reset_color}%}"
 tmp_sprompt="%{${fg[yellow]}%}%r is correct? [Yes, No, Abort, Edit]:%{${reset_color}%}"
 
 # rootユーザ時(太字にしアンダーバー
 if [ ${UID} -eq 0 ]; then
   tmp_prompt="%B%U${tmp_prompt}%u%b"
   tmp_prompt2="%B%U${tmp_prompt2}%u%b"
-  tmp_rprompt="%B%U${tmp_rprompt}%u%b"
   tmp_sprompt="%B%U${tmp_sprompt}%u%b"
 fi
 
-PROMPT=$tmp_prompt    # 通常のプロンプト
+PROMPT=$tmp_prompt    # 通常のプロンプト(ディレクトリ/git/sshキー/ユーザーを1行に)
 PROMPT2=$tmp_prompt2  # セカンダリのプロンプト(コマンドが2行以上の時に表示される)
-RPROMPT=$tmp_rprompt  # 右側のプロンプト
 SPROMPT=$tmp_sprompt  # スペル訂正用プロンプト
-# SSHログイン時のプロンプト
-[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
-  PROMPT="%{${fg[white]}%}${HOST%%.*} ${PROMPT}"
 ;
 
-### Title (user@hostname) ###
+## Title (user@hostname) ###
 #case "${TERM}" in
 #kterm*|xterm*|)
 #  precmd() {
@@ -54,12 +71,9 @@ alias la="ls -a"
 alias gitst="git status"
 alias gitdf="git diff"
 alias gitbr="git branch"
-export PATH=/usr/local/bin:$PATH
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-# haskell settings
-export PATH="$HOME/.local/bin:$PATH"
+alias gitcoma="git commit --amend"
 
 export TERM=xterm-256color
+
+# The next line enables shell command completion for gcloud.
+if [ -f "${HOME}/google-cloud-sdk/completion.zsh.inc" ]; then . "${HOME}/google-cloud-sdk/completion.zsh.inc"; fi
