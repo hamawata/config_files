@@ -19,11 +19,16 @@ zstyle ':vcs_info:git:*' formats "%{${fg[green]}%} (%b)%{${reset_color}%}"
 precmd() { vcs_info }
 
 # ssh-add -l summary (key count, 🔑 icon); empty when no agent or no keys
-# loaded, so it doesn't clutter the prompt when unused
+# loaded, so it doesn't clutter the prompt when unused. Exit status must be
+# checked rather than just counting lines -- "no identities" goes to stdout
+# too, so a naive line count misreports it as 1 key.
 ssh_agent_prompt_info() {
-  local n
-  n=$(ssh-add -l 2>/dev/null | grep -c '^')
-  [ "$n" -gt 0 ] 2>/dev/null && print -n "%{${fg[yellow]}%} \U0001F511${n}%{${reset_color}%}"
+  local output st n
+  output=$(ssh-add -l 2>/dev/null)
+  st=$?
+  [ "$st" -eq 0 ] || return
+  n=$(print -r -- "$output" | grep -c '^')
+  print -n "%{${fg[yellow]}%} \U0001F511${n}%{${reset_color}%}"
 }
 
 # SSHログイン時は先頭にホスト名を追加
@@ -31,9 +36,10 @@ tmp_host_prefix=""
 [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
   tmp_host_prefix="%{${fg[white]}%}${HOST%%.*} %{${reset_color}%}"
 
-# 1行にディレクトリ/git/sshキー/ユーザーを詰める。右プロンプト(RPROMPT)は
-# 使わない -- コピペ時に右側のテキストが混ざるのが煩わしかったため
-tmp_prompt=${tmp_host_prefix}'%{${fg[blue]}%}%~%{${reset_color}%}${vcs_info_msg_0_}$(ssh_agent_prompt_info) %{${fg[cyan]}%}%n%# %{${reset_color}%}'
+# 1行にディレクトリ/git/sshキー/直前コマンドの終了ステータス(非0時のみ)/
+# ユーザーを詰める。右プロンプト(RPROMPT)は使わない -- コピペ時に右側の
+# テキストが混ざるのが煩わしかったため
+tmp_prompt=${tmp_host_prefix}'%{${fg[blue]}%}%~%{${reset_color}%}${vcs_info_msg_0_}$(ssh_agent_prompt_info)%(?. .%{${fg[red]}%}[%?]%{${reset_color}%} )%{${fg[cyan]}%}%n%# %{${reset_color}%}'
 tmp_prompt2="%{${fg[cyan]}%}%_> %{${reset_color}%}"
 tmp_sprompt="%{${fg[yellow]}%}%r is correct? [Yes, No, Abort, Edit]:%{${reset_color}%}"
 
