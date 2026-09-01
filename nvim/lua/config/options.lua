@@ -1,5 +1,15 @@
 -- ported from ../../init.vim
 
+-- Neovim may be launched from a GUI/login context whose PATH lacks the user
+-- bin dirs. Restore them so tools spawned by plugins resolve -- notably
+-- nvim-lspconfig's gopls root_dir, and gopls itself, which shell out to `go`.
+for _, dir in ipairs({ '~/.local/bin', '~/go/bin' }) do
+  local p = vim.fn.expand(dir)
+  if vim.fn.isdirectory(p) == 1 and not (':' .. (vim.env.PATH or '') .. ':'):find(':' .. p .. ':', 1, true) then
+    vim.env.PATH = p .. ':' .. (vim.env.PATH or '')
+  end
+end
+
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
